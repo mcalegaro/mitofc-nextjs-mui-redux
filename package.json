@@ -7,10 +7,10 @@
     "@material-ui/icons": "^4.9.1",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/next": "latest",
-    "@types/node": "latest",
+    "@types/node": "14.10.1",
     "@types/react-dom": "latest",
     "@types/react-redux": "latest",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "clsx": "^1.0.4",
     "next": "*",
     "next-redux-wrapper": "^6.0.0",
@@ -26,10 +26,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
     "export": "next export"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
