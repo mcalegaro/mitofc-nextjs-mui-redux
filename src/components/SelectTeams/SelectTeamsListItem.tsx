@@ -14,7 +14,7 @@ export default function SelectTeamsListItem(props: TeamCheckBoxProps) {
         setSelected(!selected)
         if (props.handleClick !== undefined) {
             e.target.checked = !selected
-            e.target.name = props.id
+            e.target.name = team.time_id
             handleClick(e)
         }
     }
