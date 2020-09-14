@@ -10,14 +10,14 @@ import { selectState as selectTeams } from '../src/store/teams/reducer';
 export default function Index(data: any) {
 
   const ids = useSelector(selectTeams)
-  const [teams, setTeams] = useState()
-  const [loading, setLoading] = useState(false)
+  const [teams, setTeams] = useState<any[]>()
+  // const [loading, setLoading] = useState(false)
 
-  const renderLogin = () => {
-    // if (data.error === undefined && user.name === undefined) {
-    //   return <LoginForm />
-    // }
-  }
+  // const renderLogin = () => {
+  // if (data.error === undefined && user.name === undefined) {
+  //   return <LoginForm />
+  // }
+  // }
 
   const tAux = teams ? teams.map(t => {
     if (t.time) {
@@ -27,7 +27,7 @@ export default function Index(data: any) {
 
   if (teams === undefined || JSON.stringify(tAux) != JSON.stringify(ids)) {
     Promise.all(
-      ids.map(async (t) => {
+      ids.map(async (t: any) => {
         const res = await fetch(API_TEAM + t)
         const data = await res.json()
         const team = sanitizeTeam(data.data, t)
@@ -45,7 +45,7 @@ export default function Index(data: any) {
   }
 
   return (
-    <div align="center">
+    <div style={{ textAlign: 'center' }}>
       <StatusMarket data={data} />
       {/* <Link href="/about" >
             Go to the about page

@@ -6,10 +6,13 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "@reduxjs/toolkit": "^1.4.0",
-    "@types/react-redux": "^7.1.9",
+    "@types/next": "latest",
+    "@types/node": "latest",
+    "@types/react-dom": "latest",
+    "@types/react-redux": "latest",
     "axios": "^0.19.2",
-    "clsx": "latest",
-    "next": "latest",
+    "clsx": "^1.0.4",
+    "next": "*",
     "next-redux-wrapper": "^6.0.0",
     "react": "latest",
     "react-dom": "latest",
@@ -17,7 +20,8 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.2",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typescript": "latest"
   },
   "scripts": {
     "dev": "next",
@@ -27,10 +31,5 @@
     "export": "next export"
   },
   "devDependencies": {
-    "@types/next": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "typescript": "latest"
   }
 }

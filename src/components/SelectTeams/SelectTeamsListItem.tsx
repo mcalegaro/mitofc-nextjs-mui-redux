@@ -1,5 +1,5 @@
 import { Checkbox, CheckboxProps, Divider, FormControlLabel, ListItem } from "@material-ui/core";
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { selectState as selectTeams } from '../../store/teams/reducer';
 import TeamListItemSContent from "../TeamListItemSContent";
@@ -10,7 +10,7 @@ export default function SelectTeamsListItem(props: TeamCheckBoxProps) {
     const storedTeams = useSelector(selectTeams)
     const [selected, setSelected] = useState(storedTeams.includes(parseInt(team.time_id)))
 
-    const internalHandleClick = (e: SyntheticEvent) => {
+    const internalHandleClick = (e: any) => {
         setSelected(!selected)
         if (props.handleClick !== undefined) {
             e.target.checked = !selected

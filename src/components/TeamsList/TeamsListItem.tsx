@@ -1,4 +1,4 @@
-import { Divider, ListItem, ListItemText } from '@material-ui/core'
+import { Divider, ListItem } from '@material-ui/core'
 import TeamListItemSContent from '../TeamListItemSContent'
 
 export default function TeamsListItem(props: any) {

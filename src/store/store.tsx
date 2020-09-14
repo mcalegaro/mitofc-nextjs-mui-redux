@@ -1,6 +1,6 @@
 // ./store/store
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { createWrapper } from "next-redux-wrapper";
+import { applyMiddleware, combineReducers, createStore, Store } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { reducer as teamsReducer } from "./teams/reducer";
 
@@ -11,7 +11,7 @@ const combinedReducer = combineReducers({
 });
 
 // BINDING MIDDLEWARE
-const bindMiddleware = (middleware) => {
+const bindMiddleware = (middleware: any) => {
     if (process.env.NODE_ENV !== "production") {
         const { composeWithDevTools } = require("redux-devtools-extension");
         return composeWithDevTools(applyMiddleware(...middleware));
@@ -19,8 +19,8 @@ const bindMiddleware = (middleware) => {
     return applyMiddleware(...middleware);
 };
 
-const makeStore = ({ isServer }) => {
-    if (isServer) {
+const makeStore = (props: any) => {
+    if (props.isServer) {
         //If it's on server side, create a store
         return createStore(combinedReducer, bindMiddleware([thunkMiddleware]));
     } else {
@@ -37,7 +37,7 @@ const makeStore = ({ isServer }) => {
         // Create a new reducer with our existing reducer
         const persistedReducer = persistReducer(persistConfig, combinedReducer);
 
-        const store = createStore(
+        const store: MyStore = createStore(
             persistedReducer,
             bindMiddleware([thunkMiddleware])
         ); // Creating the store again
@@ -52,3 +52,7 @@ const makeStore = ({ isServer }) => {
 
 // Export the wrapper & wrap the pages/_app.js with this wrapper only
 export const wrapper = createWrapper(makeStore);
+
+export interface MyStore extends Store {
+    __persistor: any
+}

@@ -36,7 +36,7 @@ const Transition = React.forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function SelectTeamsList(props: any) {
+export default function SelectTeamsList() {
 
     const classes = useStyles();
 
@@ -46,9 +46,9 @@ export default function SelectTeamsList(props: any) {
     const [loading, setLoading] = useState(false)
     const [msg, setMsg] = useState('')
     const storedTeams = useSelector(selectTeams)
-    const [selectedTeams, setSelectedTeams] = useState([].concat(storedTeams))
+    const [selectedTeams, setSelectedTeams] = useState<any[]>([].concat(storedTeams))
 
-    const dispatchUpdateTeams = useDispatch(updateTeams)
+    const dispatch = useDispatch()
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -58,7 +58,7 @@ export default function SelectTeamsList(props: any) {
         setOpen(false);
     }
 
-    const handleTeamNameChange = (e: SyntheticEvent) => {
+    const handleTeamNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         setName(e.target.value)
     }
@@ -82,13 +82,13 @@ export default function SelectTeamsList(props: any) {
     }
 
     const handleSave = () => {
-        dispatchUpdateTeams(updateTeams(selectedTeams))
+        dispatch(updateTeams(selectedTeams))
         handleClose()
     }
 
-    const selectTeam = (e: SyntheticEvent) => {
+    const selectTeam = (e: any) => {
         e.preventDefault()
-        let auxSave = [parseInt(e.target.name)];
+        let auxSave: any[] = [parseInt(e.target.name)];
         if (e.target.checked) {
             auxSave = auxSave.concat(selectedTeams)
         } else {
@@ -142,7 +142,7 @@ export default function SelectTeamsList(props: any) {
                     {!loading
                         ? teamsList.length > 0
                             ? (
-                                teamsList.map((t) => {
+                                teamsList.map((t: any) => {
                                     return <SelectTeamsListItem
                                         key={t.time_id}
                                         team={t}
@@ -150,10 +150,10 @@ export default function SelectTeamsList(props: any) {
                                     />
                                 })
                             )
-                            : <div align="center">
+                            : <div style={{textAlign:'center'}}>
                                 {msg}
                             </div>
-                        : <div align="center">
+                        : <div style={{textAlign:'center'}}>
                             <CircularProgress />
                         </div>
                     }

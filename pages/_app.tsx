@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { AppProps, Container } from 'next/app';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 import { useStore } from 'react-redux';
@@ -13,7 +13,7 @@ import theme from '../src/theme';
 
 function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
-  const store = useStore((state => state));
+  const store: any = useStore();
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -35,10 +35,10 @@ function MyApp(props: AppProps) {
           <CssBaseline />
           <MenuAppBar />
           {/* <Container maxWidth="sm"> */}
-            <Box m={1}>
-              <Component {...pageProps} />
-              <Copyright />
-            </Box>
+          <Box m={1}>
+            <Component {...pageProps} />
+            <Copyright />
+          </Box>
           {/* </Container> */}
         </ThemeProvider>
       </React.Fragment>
