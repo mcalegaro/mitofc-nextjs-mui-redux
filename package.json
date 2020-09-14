@@ -24,11 +24,9 @@
     "typescript": "latest"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
-    "export": "next export"
+    "start": "next start -p $PORT"
   },
   "devDependencies": {}
 }
